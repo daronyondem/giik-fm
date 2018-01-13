@@ -99,7 +99,9 @@ namespace giikfunctions
                             }
                         }
                         file.Close();
+#if (DEBUG == false)
                         analyticsBlob.Delete();
+#endif
                     }
                 }
             }
