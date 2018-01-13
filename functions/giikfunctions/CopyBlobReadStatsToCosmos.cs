@@ -89,6 +89,9 @@ namespace giikfunctions
                                         if (ex.RequestInformation.HttpStatusCode != 409)
                                         {
                                             log.Info($"Exception for {analyticsBlob.Uri}: {ex}");
+                                            CloudBlobContainer failedLogsContainer = blobClient.GetContainerReference("failedlogs");
+                                            CloudBlockBlob targetBlob = failedLogsContainer.GetBlockBlobReference(analyticsBlob.Name);
+                                            targetBlob.StartCopy((CloudBlockBlob)analyticsBlob);
                                             throw;
                                         }
                                     }
