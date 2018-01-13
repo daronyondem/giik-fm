@@ -11,12 +11,12 @@ using System.Configuration;
 
 namespace giikfunctions
 {
-    public static class CopyBlobReadStatsToCosmos
+    public static class CopyBlobReadStatsToTables
     {
-        [FunctionName("CopyBlobReadStatsToCosmos")]
+        [FunctionName("CopyBlobReadStatsToTables")]
         public static void Run([TimerTrigger("0 0 1 * * *")]TimerInfo myTimer, TraceWriter log)
         {
-            log.Info($"Timer trigger function for CopyBlobReadStatsToCosmos executed at: {DateTime.Now}");
+            log.Info($"Timer trigger function for CopyBlobReadStatsToTables executed at: {DateTime.Now}");
 
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["AnalyticsStorage"]);
             CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
